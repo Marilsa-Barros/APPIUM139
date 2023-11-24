@@ -5,14 +5,14 @@ using OpenQA.Selenium.Appium.Android;
 using OpenQA.Selenium.Appium.Enums;
 using OpenQA.Selenium.Appium.MultiTouch;
 
-namespace Appium;
+namespace appium;
 
 public class SelectProductMDA
 {
     // Atributos
     public static string SAUCE_USERNAME = Environment.GetEnvironmentVariable("SAUCE_USERNAME");
     public static string SAUCE_ACCESS_KEY = Environment.GetEnvironmentVariable("SAUCE_ACCESS_KEY");
-    Uri URI = new Uri($"https://{SAUCE_USERNAME}:{SAUCE_ACCESS_KEY}@ondemand.us-west-1.saucelabs.com:443/wd/hub");
+    public Uri URI = new Uri($"https://{SAUCE_USERNAME}:{SAUCE_ACCESS_KEY}@ondemand.us-west-1.saucelabs.com:443/wd/hub");
 
     public AndroidDriver<AndroidElement> driver { get; set; } // declara o objeto do Appium para leitura e gravação
 
@@ -51,7 +51,7 @@ public class SelectProductMDA
         driver.FindElement(MobileBy.AccessibilityId("Sauce Labs Backpack")).Click();
 
         // verificar o nome do produto na tela do produto
-        String tituloProduto = driver.FindElement(MobileBy.Id("com.saucelabs.mydemoapp.android:id/cartIV")).Text;
+        String tituloProduto = driver.FindElement(MobileBy.Id("com.saucelabs.mydemoapp.android:id/productTV")).Text;
         Assert.That(tituloProduto, Is.EqualTo("Sauce Labs Backpack"));
 
         // Exemplo com 1 linha
@@ -75,7 +75,7 @@ public class SelectProductMDA
         driver.FindElement(MobileBy.Id("com.saucelabs.mydemoapp.android:id/cartTV")).Click();
 
         // Validar o nome do produto no carrinho
-        tituloProduto = driver.FindElement(MobileBy.Id("com.saucelabs.mydemoapp.android:id/cartIV")).Text;
+        tituloProduto = driver.FindElement(MobileBy.Id("com.saucelabs.mydemoapp.android:id/titleTV")).Text;
         Assert.That(tituloProduto, Is.EqualTo("Sauce Labs Backpack"));
 
         // Validar o preço do produto no carrinho
