@@ -75,6 +75,7 @@ public class SelectProductMDA
         driver.FindElement(MobileBy.Id("com.saucelabs.mydemoapp.android:id/cartTV")).Click();
 
         // Validar o nome do produto no carrinho
+        // Para fazer commit desta alteração
         tituloProduto = driver.FindElement(MobileBy.Id("com.saucelabs.mydemoapp.android:id/titleTV")).Text;
         Assert.That(tituloProduto, Is.EqualTo("Sauce Labs Backpack"));
 
